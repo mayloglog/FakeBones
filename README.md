@@ -17,6 +17,8 @@ Centralizes all generated empty objects in the FakeBones collection for easy man
 
 Sets both the armature and empty objects to always display in front for better visibility.
 
+![adsfsdf](https://github.com/user-attachments/assets/37d56f33-f7e1-4d11-95ce-8f3e9021134a)
+
 FakeBones Addon 插件介绍
 插件名称：FakeBones Addon
 版本：1.0.5
