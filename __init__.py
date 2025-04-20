@@ -1,6 +1,6 @@
 bl_info = {
     "name": "FakeBones Addon",
-    "author": "maylog",
+    "author": "dfelinto , maylog",
     "version": (1, 0, 5),
     "blender": (4, 2, 0),
     "location": "Properties > Data > FakeBones",
