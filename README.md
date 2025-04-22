@@ -2,7 +2,7 @@ FakeBones Addon Introduction
 
 Plugin Name: FakeBones Addon
 
-Version: 1.0.5
+Version: 1.0.6
 
 Author: Aman, Corey Kinard, maylog
 
@@ -32,7 +32,7 @@ FakeBones Addon 插件介绍
 
 插件名称：FakeBones Addon
 
-版本：1.0.5
+版本：1.0.6
 
 作者：Aman, Corey Kinard, maylog
 
