@@ -4,7 +4,7 @@ Plugin Name: FakeBones Addon
 
 Version: 1.0.5
 
-Author: dfelinto , maylog
+Author: Aman, Corey Kinard, maylog
 
 Supported Blender Version: 4.2.0 and above
 
