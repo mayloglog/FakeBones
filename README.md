@@ -34,7 +34,7 @@ FakeBones Addon 插件介绍
 
 版本：1.0.5
 
-作者：dfelinto , maylog
+作者：Aman, Corey Kinard, maylog
 
 支持的 Blender 版本：4.2.0 及以上
 
