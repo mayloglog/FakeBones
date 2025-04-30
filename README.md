@@ -1,7 +1,7 @@
 **FakeBones Addon Introduction**
 
 * Plugin Name: FakeBones Addon
-* Version: 1.0.6
+* Version: 1.0.7
 * Author: Aman, Corey Kinard, maylog
 * Supported Blender Version: 4.2.0 and above
 * Location: Properties > Data Panel > FakeBones
@@ -22,7 +22,7 @@
 **FakeBones Addon 插件介绍**
 
 * 插件名称：FakeBones Addon
-* 版本：1.0.6
+* 版本：1.0.7
 * 作者：Aman, Corey Kinard, maylog
 * 支持的 Blender 版本：4.2.0 及以上
 * 位置：属性 > 数据面板 > FakeBones
