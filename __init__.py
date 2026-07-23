@@ -14,7 +14,7 @@
 bl_info = {
     "name": "FakeBones",
     "author": "Aman, Corey Kinard, maylog",
-    "version": (1, 0, 7),
+    "version": (1, 0, 8),
     "blender": (4, 2, 0),
     "location": "Properties > Data > FakeBones",
     "description": "Automates the creation of fake bones for better visualization of armatures",
@@ -25,11 +25,13 @@ import bpy
 from bpy.types import Operator, Panel, PropertyGroup
 from bpy.props import FloatProperty, StringProperty
 import mathutils
+from .translations import translations_dict
+from bpy.app.translations import pgettext_iface
 
 # 自定义属性组，用于存储用户设置
 class FakeBonesSettings(PropertyGroup):
     cone_size: FloatProperty(
-        name="Cone Size",
+        name=pgettext_iface("Cone Size"),
         description="Size for cone empties (applied via Update Cone Size button)",
         default=0.004,
         min=0.0001,
@@ -44,7 +46,7 @@ class FakeBonesSettings(PropertyGroup):
 # 操作类：创建假骨骼
 class FAKEBONES_OT_CreateFakeBones(Operator):
     bl_idname = "object.create_fake_bones"
-    bl_label = "Create Fake Bones"
+    bl_label = pgettext_iface("Create Fake Bones")
     bl_options = {'REGISTER', 'UNDO'}
 
     @classmethod
@@ -172,13 +174,13 @@ class FAKEBONES_OT_CreateFakeBones(Operator):
         context.view_layer.update()  # 更新视图层，确保设置生效
 
         # 步骤 10：报告成功
-        self.report({'INFO'}, f"FakeBones created successfully for {armature.name} in {sub_coll_name}!")
+        self.report({'INFO'}, pgettext_iface("FakeBones created successfully for {} in {}!").format(armature.name, sub_coll_name))
         return {'FINISHED'}
 
 # 操作类：清除假骨骼
 class FAKEBONES_OT_ClearFakeBones(Operator):
     bl_idname = "object.clear_fake_bones"
-    bl_label = "Clear Fake Bones"
+    bl_label = pgettext_iface("Clear Fake Bones")
     bl_options = {'REGISTER', 'UNDO'}
 
     @classmethod
@@ -211,13 +213,13 @@ class FAKEBONES_OT_ClearFakeBones(Operator):
                     bpy.data.objects.remove(obj, do_unlink=True)
                 bpy.data.collections.remove(fake_bones_coll)
 
-        self.report({'INFO'}, f"FakeBones cleared successfully for {armature.name}!")
+        self.report({'INFO'}, pgettext_iface("FakeBones cleared successfully for {}!").format(armature.name))
         return {'FINISHED'}
 
 # 操作类：更新圆锥尺寸
 class FAKEBONES_OT_UpdateConeSize(Operator):
     bl_idname = "object.update_cone_size"
-    bl_label = "Update Cone Size"
+    bl_label = pgettext_iface("Update Cone Size")
     bl_options = {'REGISTER', 'UNDO'}
 
     @classmethod
@@ -245,19 +247,19 @@ class FAKEBONES_OT_UpdateConeSize(Operator):
                 updated = True
 
         if updated:
-            self.report({'INFO'}, f"Cone size updated successfully for {armature.name}!")
+            self.report({'INFO'}, pgettext_iface("Cone size updated successfully for {}!").format(armature.name))
         else:
-            self.report({'WARNING'}, f"No cone empties found to update for {armature.name}!")
+            self.report({'WARNING'}, pgettext_iface("No cone empties found to update for {}!").format(armature.name))
         return {'FINISHED'}
 
 # UI 面板类（位于属性 > 数据面板）
 class FAKEBONES_PT_Panel(Panel):
-    bl_label = "FakeBones"
+    bl_label = pgettext_iface("FakeBones")
     bl_idname = "FAKEBONES_PT_Panel"
     bl_space_type = 'PROPERTIES'
     bl_region_type = 'WINDOW'
     bl_context = "data"
-    bl_category = "FakeBones"
+    bl_category = pgettext_iface("FakeBones")
     bl_options = {'DEFAULT_CLOSED'}  # 默认折叠面板
 
     @classmethod
@@ -270,21 +272,23 @@ class FAKEBONES_PT_Panel(Panel):
         settings = context.scene.fake_bones_settings
 
         # 添加所有 UI 控件
-        layout.operator("object.create_fake_bones", text="Create Fake Bones")
-        layout.operator("object.clear_fake_bones", text="Clear Fake Bones")
-        layout.prop(settings, "skip_bone_patterns", text="Skip Bone Patterns")
-        layout.prop(settings, "cone_size", text="Cone Size")
-        layout.operator("object.update_cone_size", text="Update Cone Size")
+        layout.operator("object.create_fake_bones", text=pgettext_iface("Create Fake Bones"))
+        layout.operator("object.clear_fake_bones", text=pgettext_iface("Clear Fake Bones"))
+        layout.prop(settings, "skip_bone_patterns", text=pgettext_iface("Skip Bone Patterns"))
+        layout.prop(settings, "cone_size", text=pgettext_iface("Cone Size"))
+        layout.operator("object.update_cone_size", text=pgettext_iface("Update Cone Size"))
 
 # 注册和卸载
 classes = (FakeBonesSettings, FAKEBONES_OT_CreateFakeBones, FAKEBONES_OT_ClearFakeBones, FAKEBONES_OT_UpdateConeSize, FAKEBONES_PT_Panel)
 
 def register():
+    bpy.app.translations.register(__name__, translations_dict)
     for cls in classes:
         bpy.utils.register_class(cls)
     bpy.types.Scene.fake_bones_settings = bpy.props.PointerProperty(type=FakeBonesSettings)
 
 def unregister():
+    bpy.app.translations.unregister(__name__)
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
     if hasattr(bpy.types.Scene, "fake_bones_settings"):

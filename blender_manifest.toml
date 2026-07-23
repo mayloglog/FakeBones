@@ -1,0 +1,12 @@
+schema_version = "1.0.0"
+id = "FakeBones"
+name = "FakeBones"
+version = "1.0.8"
+tagline = "enhance armature visualization"
+maintainer = "Aman, Corey Kinard, maylog"
+type = "add-on"
+tags = ["Animation"]
+blender_version_min = "4.2.0"
+license = ["SPDX:GPL-3.0-or-later"]
+website = "https://github.com/mayloglog/FakeBones/tree/main"
+copyright = ["2025 Aman, Corey Kinard, maylog"]
