@@ -22,7 +22,7 @@
 **FakeBones Addon 插件介绍**
 
 * 插件名称：FakeBones Addon
-* 版本：1.0.7
+* 版本：1.0.8
 * 作者：Aman, Corey Kinard, maylog
 * 支持的 Blender 版本：4.2.0 及以上
 * 位置：属性 > 数据面板 > FakeBones
