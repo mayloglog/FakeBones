@@ -1,7 +1,7 @@
 **FakeBones Addon Introduction**
 
 * Plugin Name: FakeBones Addon
-* Version: 1.0.7
+* Version: 1.0.8
 * Author: Aman, Corey Kinard, maylog
 * Supported Blender Version: 4.2.0 and above
 * Location: Properties > Data Panel > FakeBones
